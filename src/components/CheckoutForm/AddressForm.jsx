@@ -57,22 +57,22 @@ const AddressForm = ({checkoutToken}) => {
             <FormProvider {...methods}>
                 <form onSubmit=''>
                     <Grid container spacing={3}>
-                    <FormInput required name="firstName" label="First name" />
-                    <FormInput required name="lastName" label="Last name" />
-                    <FormInput required name="address1" label="Address line 1" />
-                    <FormInput required name="city" label="City" />
-                    <FormInput required name="zip" label="Zip / Postal code" />                    
-                    <FormInput required name="email" label="Email" />
+                        <FormInput required name="firstName" label="First name" />
+                        <FormInput required name="lastName" label="Last name" />
+                        <FormInput required name="address1" label="Address line 1" />
+                        <FormInput required name="city" label="City" />
+                        <FormInput required name="zip" label="Zip / Postal code" />                    
+                        <FormInput required name="email" label="Email" />                    
+                    <Grid item xs={12} sm={6} ms={6} lg={6}>
+                        <InputLabel>Shipping Country</InputLabel>
+                        <Select value={shippingCountry} fullWidth onChange={(e) => setShippingCountry(e.target.value)}>
+                            {countries.map((item) => (
+                            <MenuItem key={item.id} value={item.id}>
+                                {item.label}
+                            </MenuItem>
+                            ))}
+                        </Select>
                     </Grid>
-                    <Grid item xs={12} sm={6}>
-                    <InputLabel>Shipping Country</InputLabel>
-                    <Select value={shippingCountry} fullWidth onChange={(e) => setShippingCountry(e.target.value)}>
-                        {countries.map((item) => (
-                        <MenuItem key={item.id} value={item.id}>
-                            {item.label}
-                        </MenuItem>
-                          ))}
-                    </Select>
                     </Grid>
                 </form>
             </FormProvider>
