@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { InputLabel, Select, MenuItem, Button, Grid, Typography } from '@material-ui/core';
 import { useForm, FormProvider } from 'react-hook-form';
 import { Link } from 'react-router-dom';
@@ -14,11 +14,13 @@ const AddressForm = ({checkoutToken}) => {
     const [shippingOptions, setShippingOptions] = useState([]);
     const [shippingOption, setShippingOption] = useState('');
     const methods = useForm();
+    const countries = useMemo(()=>{
+        console.log('redibujar')    
+        return Object.entries(shippingCountries).map(([code, name]) => ({ id: code, label: name }))
+    },[shippingCountries]) 
+    const subdivisions = useMemo(()=>Object.entries(shippingSubdivisions).map(([code, name]) => ({ id: code, label: name })),[shippingSubdivisions]);
 
-    const countries = Object.entries(shippingCountries).map(([code, name]) => ({ id: code, label: name }));
-    const subdivisions = Object.entries(shippingSubdivisions).map(([code, name]) => ({ id: code, label: name }));
-
-
+    
     const fetchShippingCountries = async (checkoutTokenId) => {
         const { countries } = await commerce.services.localeListShippingCountries(checkoutTokenId);
     
@@ -56,7 +58,7 @@ const AddressForm = ({checkoutToken}) => {
         <>
             <Typography variant="h6" gutterBottom>Shipping address</Typography>
             <FormProvider {...methods}>
-                <form onSubmit=''>
+                <form onSubmit={()=> {}}>
                     <Grid container spacing={3}>
                         <FormInput required name="firstName" label="First name" />
                         <FormInput required name="lastName" label="Last name" />
