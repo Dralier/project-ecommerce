@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CssBaseline ,Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button,} from "@material-ui/core";
+import { CssBaseline ,Paper, Stepper, Step, StepLabel, Typography,/* CircularProgress,*/ Divider, Button,} from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
 
 
@@ -40,11 +40,11 @@ const Checkout = ({cart, order, onCaptureCheckout, error}) => {
         nextStep();
     }
 
-    const timeout = () => {
-        setTimeout(()=>{
+    // const timeout = () => {
+    //     setTimeout(()=>{
             
-        },3000)
-    }
+    //     },3000)
+    // }
     console.log(order)
 
     let Confirmation = () => (
