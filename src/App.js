@@ -56,6 +56,7 @@ function App() {
           setOrder(incomingOrder);
     
           refreshCart();
+        //   await commerce.cart.empty()
         } catch (error) {
           setErrorMessage(error.data.error.message);
         }

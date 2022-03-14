@@ -3,7 +3,7 @@ import { CssBaseline ,Paper, Stepper, Step, StepLabel, Typography,/* CircularPro
 import { Link, useHistory } from "react-router-dom";
 
 
-import {commerce} from '../../../lib/commerce'
+import { commerce } from '../../../lib/commerce'
 import useStyles from "./styles";
 import AddressForm from '../AddressForm';
 import PaymentForm from '../PaymentForm';
@@ -47,6 +47,11 @@ const Checkout = ({cart, order, onCaptureCheckout, error}) => {
     // }
     console.log(order)
 
+    async function handleClick() {
+     await commerce.cart.empty(); 
+     history.push("/");
+    }
+
     let Confirmation = () => (
         <>
             <div>
@@ -55,7 +60,7 @@ const Checkout = ({cart, order, onCaptureCheckout, error}) => {
             <Typography cariant="subtitle2"> </Typography>
             </div>
             <br />
-            <Button component={Link} to="/" variant="outlined" type="button">Back to Home</Button>
+            <Button onClick={handleClick} variant="outlined" type="button">Back to Home</Button>
         </>
     )
 
