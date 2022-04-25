@@ -1,5 +1,16 @@
 # Getting Started with Create React App
 
+This is a project about a ecommerce web, where you add items to a database and show them in the first view, select and add to your cart, then bamke a payment and recieve a mail with a confirmation.
+
+
+
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
